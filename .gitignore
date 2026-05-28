@@ -1,0 +1,34 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# ChromaDB向量数据库
+poker_rag_db/
+
+# Node
+node_modules/
+frontend/node_modules/
+frontend/dist/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+
+# 数据库
+*.sqlite3
+*.db
+
+# 敏感文件
+SECRET.md
+.env

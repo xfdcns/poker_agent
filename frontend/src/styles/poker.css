@@ -1,0 +1,209 @@
+:root {
+  --bg-dark: #0a0e17;
+  --bg-table: #1a472a;
+  --bg-card: #1c2333;
+  --bg-panel: #141b2d;
+  --border: #2a3a5c;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --gold: #f59e0b;
+  --green: #22c55e;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --purple: #a855f7;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* 按钮基础 */
+.btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-primary { background: var(--gold); color: #000; }
+.btn-primary:hover { background: #d97706; }
+.btn-green { background: var(--green); color: #fff; }
+.btn-green:hover { background: #16a34a; }
+.btn-red { background: var(--red); color: #fff; }
+.btn-red:hover { background: #dc2626; }
+.btn-blue { background: var(--blue); color: #fff; }
+.btn-blue:hover { background: #2563eb; }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* 输入框 */
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input:focus { border-color: var(--gold); }
+
+/* 卡片 */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* 扑克牌面 */
+.poker-card {
+  display: inline-flex;
+  width: 52px;
+  height: 72px;
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 2px;
+  position: relative;
+}
+.poker-card.red { color: var(--red); }
+.poker-card.black { color: #1a1a1a; }
+.poker-card-back {
+  background: linear-gradient(135deg, #1e3a5f, #2d5a87);
+  border: 2px solid #3b7dc9;
+  color: transparent;
+}
+.poker-card-back::after {
+  content: '♠';
+  position: absolute;
+  font-size: 24px;
+  color: rgba(255,255,255,0.15);
+}
+
+/* 牌桌 */
+.poker-table {
+  background: radial-gradient(ellipse at center, #2d6b3f 0%, #1a472a 70%, #0f2d1a 100%);
+  border: 4px solid #8b6914;
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(0,0,0,0.5), inset 0 0 60px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+/* 布局 */
+.page-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.form-box {
+  width: 400px;
+  max-width: 90vw;
+}
+
+.form-box h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--gold);
+}
+
+.form-box .field {
+  margin-bottom: 16px;
+}
+
+.form-box .field label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+/* Agent分析面板 */
+.analysis-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.analysis-panel .metric {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.analysis-panel .metric:last-child { border-bottom: none; }
+
+.metric-label { color: var(--text-dim); font-size: 13px; }
+.metric-value { font-weight: 700; font-size: 16px; }
+
+/* 胜率条 */
+.win-rate-bar {
+  height: 8px;
+  background: var(--bg-dark);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.win-rate-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 9999;
+  animation: slideIn 0.3s ease;
+}
+.toast-success { background: var(--green); color: #fff; }
+.toast-error { background: var(--red); color: #fff; }
+.toast-info { background: var(--blue); color: #fff; }
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* 加载 */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
